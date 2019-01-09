@@ -1,42 +1,50 @@
 #ifndef _A_FUNCION_H_INCLUDED
 #define _A_FUNCION_H_INCLUDED
 
-double sqr(double x);
+float sqr(float x);
 
-class ActivationFunction
-{
+class ActivationFunction {
 public:
-	ActivationFunction();
-	virtual ~ActivationFunction();
-	virtual double process(double x) = 0;
-	virtual double derivative(double x) = 0;
+    ActivationFunction();
+
+    virtual ~ActivationFunction();
+
+    virtual float process(float x) = 0;
+
+    virtual float derivative(float x) = 0;
 };
 
-class Linear: public ActivationFunction
-{
+class Linear : public ActivationFunction {
 public:
-	Linear();
-	~Linear();
-	double process(double x);
-	double derivative(double x);
+    Linear();
+
+    ~Linear() override;
+
+    float process(float x) override;
+
+    float derivative(float x) override;
 };
 
-class Sigmoid: public ActivationFunction
-{
+class Sigmoid : public ActivationFunction {
 public:
-	Sigmoid();
-	~Sigmoid();
-	double process(double x);
-	double derivative(double x);
+    Sigmoid();
+
+    ~Sigmoid() override;
+
+    float process(float x) override;
+
+    float derivative(float x) override;
 };
 
-class BipolarSigmoid: public ActivationFunction
-{
+class BipolarSigmoid : public ActivationFunction {
 public:
-	BipolarSigmoid();
-	~BipolarSigmoid();
-	double process(double x);
-	double derivative(double x);
+    BipolarSigmoid();
+
+    ~BipolarSigmoid() override;
+
+    float process(float x) override;
+
+    float derivative(float x) override;
 };
 
 #endif //_A_FUNCION_H_INCLUDED

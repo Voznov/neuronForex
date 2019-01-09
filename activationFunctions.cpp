@@ -1,70 +1,57 @@
 #include <cmath>
+
+#include <cmath>
+
+#include <cmath>
+
+#include <cmath>
+
+#include <cmath>
+
+#include <cmath>
 #include "activationFunctions.h"
 
-double sqr(double x)
-{
-	return x * x;
+float sqr(float x) {
+    return x * x;
 }
 
-ActivationFunction::ActivationFunction()
-{
+ActivationFunction::ActivationFunction() = default;
+
+ActivationFunction::~ActivationFunction() = default;
+
+Linear::Linear() = default;
+
+Linear::~Linear() = default;
+
+float Linear::process(float x) {
+    return x;
 }
 
-ActivationFunction::~ActivationFunction()
-{
+float Linear::derivative(float x) {
+    return 1;
 }
 
-Linear::Linear()
-{
+Sigmoid::Sigmoid() = default;
+
+Sigmoid::~Sigmoid() = default;
+
+float Sigmoid::process(float x) {
+    return 1 / (1 + std::exp(-x));
 }
 
-Linear::~Linear()
-{
+float Sigmoid::derivative(float x) {
+    return std::exp(-x) / sqr(1 + std::exp(-x));
 }
 
-double Linear::process(double x)
-{
-	return x;
+BipolarSigmoid::BipolarSigmoid() = default;
+
+BipolarSigmoid::~BipolarSigmoid() = default;
+
+float BipolarSigmoid::process(float x) {
+    return (2 / (1 + std::exp(-x)) - 1);
 }
 
-double Linear::derivative(double x)
-{
-	return 1;
-}
-
-Sigmoid::Sigmoid()
-{
-}
-
-Sigmoid::~Sigmoid()
-{
-}
-
-double Sigmoid::process(double x)
-{
-	return 1 / (1 + exp(-x));
-}
-
-double Sigmoid::derivative(double x)
-{
-	return exp(-x) / sqr(1 + exp(-x));
-}
-
-BipolarSigmoid::BipolarSigmoid()
-{
-}
-
-BipolarSigmoid::~BipolarSigmoid()
-{
-}
-
-double BipolarSigmoid::process(double x)
-{
-	return (2 / (1 + exp(-x)) - 1);
-}
-
-double BipolarSigmoid::derivative(double x)
-{
-	return 2 * exp(-x) / sqr(1 + exp(-x));
+float BipolarSigmoid::derivative(float x) {
+    return 2 * std::exp(-x) / sqr(1 + std::exp(-x));
 }
 
